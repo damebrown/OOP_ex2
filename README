@@ -1,0 +1,50 @@
+daniel.brown1
+
+
+=============================
+=      File description     =
+=============================
+the .jar file includes the following java documents-
+SpaceShip.java- includes the abstract 'SpaceShip' class, from which all other ship-classes inherit.
+SpaceShipFactory.java- a class responsible for producing the wanted ships for the game
+HumanControlled.java- the class of the human controlled ship
+Runner.java- the class of the runner ship
+Basher.java- the class of the basher ship
+Aggressive.java- the class of the aggressive ship
+Drunkard.java- the class of the drunkard ship
+Special.java- the class of the special ship
+
+=============================
+=          Design           =
+=============================
+
+I chose to implement every type of spaceship as a different class, and make the SpaceShip class an abstract class,
+from which all other spaceship type classes inherit. all classes use the SpaceShip methods as they are except the
+doAction method and the getImage method, which only the HumanControlled class override.
+this makes the program easily extensible and modular, due to the fact that creating a new type of ship only demands
+implementing a new class and writing the relevant doAction method in the wanted way. this way of implemention saves
+a large amount of spare code and creates an intuitive logical flow of the program. the SpaceShip class is abstract
+because logically it is impossible to have a SpaceShip instance (same as having a generic animal).
+
+=============================
+=  Implementation details   =
+=============================
+Drunkard spaceship-
+every instance of this class is randomizing a number-0, 1 or 2- every time the
+doAction method is called. every 10th round the ship switches behaviour according to the randomized number, in the
+following way- if 10 rounds passed, the turning policy will be the randomized number minus 1, (in that way every
+possibility for the turning will be possible), if the number is 0 or 2 the accelerating will be activated, and it will
+not be activated if the number is 1.
+in every other option (meaning before 10 rounds passed since the policy was last changed), the ship will fire if
+and only if the number is 0, and will try to activate the shield if and only if the number is 1. teleports will not be
+attempted.
+
+Special spaceship-
+The behaviour of the special spaceship is- never accelerating, teleporting when possible, and shooting if it is not
+possible to teleport. when the special ship is close to a different ship, it will attempt to activate the shield.
+in addition, the firing of the special ship is not dependent on the rounds (there's no cool-down waiting), and it can
+fire any time it desires (in condition that it has enough energy to shoot).
+
+=============================
+=    Answers to questions   =
+=============================
